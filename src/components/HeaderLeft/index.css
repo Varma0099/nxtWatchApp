@@ -1,0 +1,35 @@
+.ulHL {
+  display: flex;
+  flex-direction: column;
+  color: #000000;
+}
+.nav-bg-left {
+  width: 10vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #000000;
+}
+.social-media {
+  display: flex;
+}
+.social-media-img {
+  height: 3vh;
+  width: 2vw;
+  margin-right: 2vh;
+}
+.left-li {
+  list-style-type: none;
+  font-size: 15.5px;
+  margin-bottom: 1vh;
+  align-self: flex-start;
+  color: #475569;
+}
+.symbol {
+  margin-right: 1vh;
+}
+.nav-bg-left-bottom {
+  padding: 10px;
+}
+

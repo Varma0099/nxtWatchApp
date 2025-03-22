@@ -1,0 +1,33 @@
+.class-li-link {
+  text-decoration: none;
+}
+.list-videos {
+  list-style-type: none;
+  margin-left: 5vh;
+  margin-bottom: 1vh;
+  color: dimgray;
+}
+.img-videos {
+  height: 30vh;
+  width: 25vw;
+}
+.logo-img {
+  height: 9vh;
+  width: 6vw;
+}
+.descr {
+  display: flex;
+  width: 25vw;
+}
+.li-view {
+  display: flex;
+  justify-content: space-around;
+  margin-right: 10vh;
+  align-items: center;
+}
+.li1 {
+  list-style-type: none;
+  width: 30px;
+  margin-right: 2vh;
+}
+

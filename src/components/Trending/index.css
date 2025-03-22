@@ -1,0 +1,12 @@
+.videos-list-trending {
+  display: flex;
+  flex-direction: column;
+}
+.symbol-trending {
+  color: red;
+}
+.h-trending {
+  margin-left: 20vh;
+  background-color: gainsboro;
+  padding: 10px;
+}

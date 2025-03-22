@@ -1,0 +1,33 @@
+.Active {
+  color: #2563eb;
+  background-color: transparent;
+  border: 0px;
+}
+.inActive {
+  color: #64748b;
+  background-color: transparent;
+  border: 0px;
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.info-div {
+  display: flex;
+
+  align-items: center;
+}
+.info-p {
+  margin-right: 3vh;
+}
+.bg-detail {
+  padding: 20px;
+  margin-left: 10vh;
+}
+
+
+
+
+
+

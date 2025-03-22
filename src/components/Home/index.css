@@ -1,0 +1,34 @@
+.banner-bg {
+  height: 30vh;
+  width: 90%;
+  background-size: cover;
+}
+.banner {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 15px;
+}
+.close-but {
+  background-color: transparent;
+  border: 0px;
+}
+.Home {
+  display: flex;
+}
+
+.Home-body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.videos-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100vh;
+  overflow: auto;
+  background-color: #f1f5f9;
+}
+

@@ -1,0 +1,27 @@
+.li-view-trending {
+  display: flex;
+  justify-content: space-around;
+  margin-right: 10vh;
+  align-items: center;
+}
+.list-videos-trending {
+  display: flex;
+  margin: 5vh;
+  color: darkslategrey;
+}
+.img-videos-trending {
+  height: 30vh;
+  width: 25vw;
+  margin: 5vh;
+}
+.list-videos-gaming {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 5vh;
+  color: darkslategrey;
+}
+
+
+
+
