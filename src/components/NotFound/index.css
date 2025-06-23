@@ -1,0 +1,72 @@
+.notfound-container {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  padding: 2.5rem 1rem 2rem 1rem;
+  gap: 2rem;
+}
+
+.notfound-illustration {
+  width: 100%;
+  max-width: 380px;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
+}
+
+.notfound-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+.notfound-message {
+  font-size: 1.18rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.notfound-btn {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2.2rem;
+  border-radius: var(--border-radius);
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.18s;
+}
+.notfound-btn:hover,
+.notfound-btn:focus {
+  background: var(--color-accent);
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .notfound-title {
+    font-size: 1.3rem;
+  }
+  .notfound-message {
+    font-size: 1rem;
+  }
+  .notfound-illustration {
+    max-width: 220px;
+  }
+  .notfound-btn {
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+  }
+}

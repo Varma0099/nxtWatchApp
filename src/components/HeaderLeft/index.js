@@ -1,81 +1,85 @@
-import {Component} from 'react'
-import {Link} from 'react-router-dom'
-import {GoHome} from 'react-icons/go'
-
-import {FaFire, FaSave} from 'react-icons/fa'
-
-import {SiYoutubegaming} from 'react-icons/si'
-
+import {Link, useLocation} from 'react-router-dom'
 import './index.css'
 
-class HeaderLeft extends Component {
-  componentDidMount() {
-    this.getHeader()
-  }
+const HeaderLeft = () => {
+  const location = useLocation()
+  const {pathname} = location
 
-  getHeader = () => {
-    const response = this.props
-    console.log(response)
-  }
+  const navItems = [
+    {
+      path: '/',
+      icon: '🏠', // Home
+      text: 'Home',
+    },
+    {
+      path: '/trending',
+      icon: '📈', // Trending
+      text: 'Trending',
+    },
+    {
+      path: '/gaming',
+      icon: '🎮', // Gaming
+      text: 'Gaming',
+    },
+    {
+      path: '/saved-videos',
+      icon: '💾', // Saved
+      text: 'Saved Videos',
+    },
+  ]
 
-  render() {
-    return (
-      <div>
-        <nav className="nav-bg-left">
-          <div>
-            <ul className="left-ul">
-              <Link to="/" className="class-link">
-                <li className="left-li">
-                  {' '}
-                  <GoHome className="symbol" /> Home
-                </li>
-              </Link>
-              <Link to="/trending" className="class-link">
-                <li className="left-li">
-                  <FaFire className="symbol" />
-                  Trending
-                </li>
-              </Link>
-              <Link to="/gaming" className="class-link">
-                <li className="left-li">
-                  <SiYoutubegaming className="symbol" />
-                  Gaming
-                </li>
-              </Link>
-              <Link to="/saved-videos" className="class-link">
-                <li className="left-li">
-                  <FaSave className="symbol" />
-                  Saved Videos
-                </li>
-              </Link>
-            </ul>
-          </div>
+  const socialLinks = [
+    {
+      icon: '📘', // Facebook
+      url: 'https://facebook.com',
+      label: 'Facebook',
+    },
+    {
+      icon: '🐦', // Twitter
+      url: 'https://twitter.com',
+      label: 'Twitter',
+    },
+    {
+      icon: '💼', // LinkedIn
+      url: 'https://linkedin.com',
+      label: 'LinkedIn',
+    },
+  ]
 
-          <div className="nav-bg-left-bottom">
-            <p>Contact Us</p>
-            <div className="social-media">
-              <img
-                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
-                alt="facebook logo"
-                className="social-media-img"
-              />
-              <img
-                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png"
-                alt="twitter logo"
-                className="social-media-img"
-              />
-              <img
-                src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
-                alt="linked in logo"
-                className="social-media-img"
-              />
-            </div>
-            <p>Enjoy! Now to see your channels and recommendations!</p>
-          </div>
-        </nav>
+  return (
+    <aside className="sidebar">
+      <nav className="sidebar-nav">
+        {navItems.map(item => (
+          <Link
+            key={item.path}
+            to={item.path}
+            className={`nav-item ${pathname === item.path ? 'active' : ''}`}
+          >
+            <span className="nav-icon">{item.icon}</span>
+            <span className="nav-text">{item.text}</span>
+          </Link>
+        ))}
+      </nav>
+
+      <div className="social-links">
+        <h3 className="social-title">Contact Us</h3>
+        <div className="social-icons">
+          {socialLinks.map(link => (
+            <a
+              key={link.url}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon"
+              aria-label={link.label}
+            >
+              <span>{link.icon}</span>
+            </a>
+          ))}
+        </div>
       </div>
-    )
-  }
+    </aside>
+  )
 }
 
 export default HeaderLeft

@@ -9,6 +9,7 @@ import Gaming from './components/Gaming'
 import SavedVideos from './components/SavedVideos'
 import ProtectedRoute from './components/ProtectedRoute'
 import SavedContext from './Context/SavedContext'
+import {ThemeProvider} from './Context/ThemeContext'
 
 import './App.css'
 
@@ -34,29 +35,35 @@ class App extends Component {
   render() {
     const {savedList} = this.state
     return (
-      <BrowserRouter>
-        <SavedContext.Provider
-          value={{
-            savedList,
-            addRemoveSavedItem: this.addRemoveSavedItem,
-          }}
-        >
-          <Switch>
-            <Route exact path="/login" component={Login} />
-            <ProtectedRoute exact path="/" component={Home} />
-            <ProtectedRoute exact path="/trending" component={Trending} />
-            <ProtectedRoute exact path="/gaming" component={Gaming} />
-            <ProtectedRoute exact path="/videos/:id" component={VideoDetails} />
-            <ProtectedRoute
-              exact
-              path="/saved-videos"
-              component={SavedVideos}
-            />
-            <Route path="/not-found" component={NotFound} />
-            <Redirect to="not-found" />
-          </Switch>
-        </SavedContext.Provider>
-      </BrowserRouter>
+      <ThemeProvider>
+        <BrowserRouter>
+          <SavedContext.Provider
+            value={{
+              savedList,
+              addRemoveSavedItem: this.addRemoveSavedItem,
+            }}
+          >
+            <Switch>
+              <Route exact path="/login" component={Login} />
+              <ProtectedRoute exact path="/" component={Home} />
+              <ProtectedRoute exact path="/trending" component={Trending} />
+              <ProtectedRoute exact path="/gaming" component={Gaming} />
+              <ProtectedRoute
+                exact
+                path="/videos/:id"
+                component={VideoDetails}
+              />
+              <ProtectedRoute
+                exact
+                path="/saved-videos"
+                component={SavedVideos}
+              />
+              <Route path="/not-found" component={NotFound} />
+              <Redirect to="not-found" />
+            </Switch>
+          </SavedContext.Provider>
+        </BrowserRouter>
+      </ThemeProvider>
     )
   }
 }

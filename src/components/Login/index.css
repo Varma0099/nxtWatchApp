@@ -1,98 +1,148 @@
-.bg {
-  height: 100vh;
-  width: 100%;
-  background-color: #ffffff;
+.login-container {
+  min-height: 100vh;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
+  background: var(--color-bg);
+  padding: 1rem;
 }
-.bg1 {
-  height: 50vh;
-  width: 25%;
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  padding: 2.5rem 2rem 2rem 2rem;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  box-shadow:
-    10px 10px 15px rgba(0, 0, 0, 0.3),
-    -5px -5px 10px rgba(5, 5, 5, 0.1);
-  background-color: #ffffff;
-  border-radius: 10px;
+  align-items: center;
+  transition: background 0.3s;
 }
-.form {
+[data-theme='dark'] .login-card {
+  background: rgba(35, 35, 35, 0.92);
+}
+
+.login-logo {
+  width: 160px;
+  height: auto;
+  margin-bottom: 2rem;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.08));
+}
+
+.login-form {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  gap: 1.5rem;
 }
-.label {
-  font-size: 12px;
+
+.form-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
-.button {
-  margin-top: 10px;
-  background-color: #6366f1;
-  color: #ffffff;
-  border: 0px;
-  border-radius: 5px;
-  height: 4vh;
-}
+
 .form-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: 0.25rem;
+  transition: color 0.2s;
+}
+
+.form-input {
+  padding: 1rem 1rem 1rem 0.75rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition:
+    border 0.2s,
+    background 0.2s;
+  outline: none;
+}
+.form-input:focus {
+  border-color: var(--color-primary);
+  background: var(--color-card-hover);
+}
+
+.password-input-container {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+  align-items: center;
 }
-.logo {
-  height: 7vh;
-  width: 10vw;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  align-self: center;
+
+.password-toggle {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 50%;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
-.input {
-  background-color: transparent;
-  color: #64748b;
-  border: 1px solid #64748b;
-  border-radius: 5px;
-  margin-top: 4px;
-  padding: 10px;
-  height: 5vh;
+.password-toggle:hover,
+.password-toggle:focus {
+  background: var(--color-card-hover);
+  color: var(--color-primary);
+  outline: none;
 }
-.error-msg {
-  color: #ff0b37;
+
+.login-button {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 0;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
 }
-@media screen and (max-width: 770px) {
-  .bg {
-    height: 100vh;
-    width: 100%;
-    background-color: #ffffff;
-    align-items: center;
+.login-button:hover,
+.login-button:focus {
+  background: var(--color-accent);
+  outline: none;
+}
+
+.error-message {
+  color: var(--color-error);
+  font-size: 0.98rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 1.25rem 0.75rem 1rem 0.75rem;
   }
-  .bg1 {
-    height: 50vh;
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-
-    box-shadow:
-      10px 10px 15px rgba(0, 0, 0, 0.3),
-      -5px -5px 10px rgba(5, 5, 5, 0.1);
-    background-color: #ffffff;
-    border-radius: 10px;
+  .login-logo {
+    width: 120px;
+    margin-bottom: 1.2rem;
   }
-  .logo {
-    height: 7vh;
-    width: 30vw;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    align-self: center;
+  .form-input {
+    padding: 0.75rem 0.75rem 0.75rem 0.5rem;
+    font-size: 0.98rem;
+  }
+  .login-button {
+    font-size: 1rem;
+    padding: 0.7rem 0;
   }
 }
-
-
-
-
-
-
-
-

@@ -10,11 +10,11 @@ import {formatDistanceToNow} from 'date-fns'
 
 import Cookies from 'js-cookie'
 
-import Header from '../Header/index'
+import Header from '../Header'
 
-import VideoCard from '../VideoCard/index'
+import VideoCard from '../VideoCard'
 
-import HeaderLeft from '../HeaderLeft/index'
+import HeaderLeft from '../HeaderLeft'
 
 import './index.css'
 
@@ -47,21 +47,22 @@ class Home extends Component {
 
   renderProgressView = () => (
     <div className="loader-container" data-testid="loader">
-      <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
+      <Loader type="ThreeDots" color="#3b82f6" height="50" width="50" />
     </div>
   )
 
   renderFailureView = () => (
-    <div>
+    <div className="error-container">
       <img
         src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
         alt="failure view"
+        className="error-image"
       />
-      <h1>Oops! Something Went Wrong</h1>
-      <p>
-        We are having some trouble to complete your request please try again
+      <h1 className="error-title">Oops! Something Went Wrong</h1>
+      <p className="error-message">
+        We are having some trouble to complete your request. Please try again.
       </p>
-      <button onClick={this.retryData} type="button">
+      <button onClick={this.retryData} type="button" className="retry-button">
         Retry
       </button>
     </div>
@@ -76,71 +77,70 @@ class Home extends Component {
       headers: {
         authorization: `Bearer ${token}`,
       },
-      methode: 'GET',
+      method: 'GET',
     }
-    const response = await fetch(api, options)
-    if (response.ok) {
-      const details = await response.json()
-      console.log(details)
-      const updatedData = details.videos.map(each => ({
-        id: each.id,
-        name: each.channel.name,
-        profileImageUrl: each.channel.profile_image_url,
-        publishedAt: formatDistanceToNow(new Date(each.published_at)),
-        thumbnailUrl: each.thumbnail_url,
-        title: each.title,
-        viewCount: each.view_count,
-      }))
-      console.log('Updated Data : ', updatedData)
-      this.setState({data: updatedData, apiStatus: apiStatusConstants.success})
-    } else {
+
+    try {
+      const response = await fetch(api, options)
+      if (response.ok) {
+        const details = await response.json()
+        const updatedData = details.videos.map(each => ({
+          id: each.id,
+          channel: {
+            name: each.channel.name,
+            profileImageUrl: each.channel.profile_image_url,
+          },
+          publishedAt: each.published_at,
+          thumbnailUrl: each.thumbnail_url,
+          title: each.title,
+          viewCount: each.view_count,
+        }))
+        this.setState({
+          data: updatedData,
+          apiStatus: apiStatusConstants.success,
+        })
+      } else {
+        this.setState({apiStatus: apiStatusConstants.failure})
+      }
+    } catch (error) {
       this.setState({apiStatus: apiStatusConstants.failure})
     }
   }
 
-  InputEle = event => {
+  handleSearchInput = event => {
     this.setState({search: event.target.value})
   }
 
-  searchInput = () => {
+  handleSearch = () => {
     const {search} = this.state
     this.setState({searchEle: search}, this.getVideosData)
+  }
+
+  handleKeyPress = event => {
+    if (event.key === 'Enter') {
+      this.handleSearch()
+    }
   }
 
   closeBanner = () => {
     this.setState({banner: false})
   }
 
-  renderSuccessView() {
+  renderSuccessView = () => {
     const {data} = this.state
     return (
-      <div>
-        {data.length === 0 ? (
-          <div>
-            <img
-              src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
-              alt="no videos"
-            />
-            <h1>No Search results found</h1>
-            <p>Try different key words or remove search filter</p>
-            <button onClick={this.retryData} type="button">
-              Retry
-            </button>
-          </div>
-        ) : (
-          <ul className="videos-list">
-            {data.map(each => (
-              <VideoCard info={each} key={each.id} />
-            ))}
-          </ul>
-        )}
+      <div className="videos-grid">
+        {data.map(each => (
+          <VideoCard key={each.id} videoData={each} />
+        ))}
       </div>
     )
   }
 
   render() {
-    const {banner, search, searchEle, apiStatus} = this.state
+    const {banner, search, apiStatus} = this.state
     let renderContent
+
     switch (apiStatus) {
       case apiStatusConstants.inProgress:
         renderContent = this.renderProgressView()
@@ -155,52 +155,61 @@ class Home extends Component {
         renderContent = null
     }
 
-    console.log(searchEle)
     return (
       <div>
         <Header />
-        <div className="Home">
+        <div className="home-container">
           <HeaderLeft />
-          <div className="Home-body">
+          <div className="home-content">
             {banner && (
               <div className="banner" data-testid="banner">
-                <div
-                  className="banner-bg"
-                  style={{backgroundImage: `url(${bannerImageUrl})`}}
-                >
+                <div className="banner-content">
                   <img
                     src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
                     alt="nxt watch logo"
-                    className="logo"
+                    className="banner-logo"
                   />
-                  <p>Buy Nxt Watch Premium prepaid plans with upi</p>
-                  <button type="button">GET IT NOW</button>
-                </div>
-                <div>
-                  <button
-                    onClick={this.closeBanner}
-                    data-testid="close"
-                    className="close-but"
-                    aria-label="close"
-                    type="button"
-                  >
-                    <IoMdClose />
+                  <p className="banner-text">
+                    Buy Nxt Watch Premium prepaid plans with UPI
+                  </p>
+                  <button type="button" className="banner-button">
+                    GET IT NOW
                   </button>
                 </div>
+                <button
+                  onClick={this.closeBanner}
+                  data-testid="close"
+                  className="close-button"
+                  aria-label="close"
+                  type="button"
+                >
+                  <IoMdClose />
+                </button>
               </div>
             )}
-            <div className="search-div">
-              <input type="search" onChange={this.InputEle} value={search} />
+
+            <div className="search-container">
+              <input
+                type="search"
+                className="search-input"
+                placeholder="Search"
+                value={search}
+                onChange={this.handleSearchInput}
+                onKeyPress={this.handleKeyPress}
+              />
               <button
+                type="button"
+                className="search-button"
+                onClick={this.handleSearch}
                 aria-label="search"
                 data-testid="searchButton"
-                type="button"
-                onClick={this.searchInput}
               >
                 <FaSearch />
+                Search
               </button>
             </div>
-            <div>{renderContent}</div>
+
+            {renderContent}
           </div>
         </div>
       </div>

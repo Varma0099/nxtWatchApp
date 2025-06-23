@@ -26,8 +26,229 @@
   margin-left: 10vh;
 }
 
+.video-details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  background: var(--color-bg);
+  min-height: calc(100vh - 64px);
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+}
 
+.video-player-wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.video-meta-section {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--color-surface);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 2rem 2rem 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
 
+.video-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+}
 
+.video-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
 
+.video-stats {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+}
+
+.video-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-card-hover);
+  color: var(--color-text-secondary);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.6rem 1.1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.18s,
+    color 0.18s,
+    transform 0.18s;
+  outline: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+.action-btn:hover,
+.action-btn:focus {
+  background: var(--color-accent);
+  color: #fff;
+  transform: translateY(-2px) scale(1.04);
+}
+.action-btn.active {
+  background: var(--color-primary);
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.channel-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin-top: 1.2rem;
+}
+.channel-logo {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+.channel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.channel-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+.channel-subs {
+  font-size: 0.98rem;
+  color: var(--color-text-secondary);
+}
+
+.video-description {
+  margin-top: 1.2rem;
+  font-size: 1.08rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 320px;
+}
+
+.error-container {
+  text-align: center;
+  padding: 2.5rem 0 1rem 0;
+  color: var(--color-text-secondary);
+}
+.error-image {
+  width: 100%;
+  max-width: 340px;
+  margin-bottom: 1.5rem;
+}
+.error-title {
+  font-size: 1.5rem;
+  color: var(--color-text);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+.error-message {
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+  font-size: 1.08rem;
+}
+.retry-button {
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  font-size: 1rem;
+  transition:
+    background 0.2s,
+    color 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+.retry-button:hover,
+.retry-button:focus {
+  background: var(--color-accent);
+  color: #fff;
+  outline: none;
+}
+
+@media (max-width: 1200px) {
+  .video-details-container {
+    padding: 1.5rem 1rem 1rem 1rem;
+  }
+  .video-player-wrapper,
+  .video-meta-section {
+    max-width: 100%;
+    padding: 1.2rem 1.2rem 1rem 1.2rem;
+  }
+}
+@media (max-width: 900px) {
+  .video-details-container {
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    gap: 1.2rem;
+  }
+  .video-player-wrapper,
+  .video-meta-section {
+    padding: 0.7rem 0.7rem 0.7rem 0.7rem;
+  }
+  .video-title {
+    font-size: 1.1rem;
+  }
+  .channel-logo {
+    width: 38px;
+    height: 38px;
+  }
+}
+@media (max-width: 600px) {
+  .video-details-container {
+    padding: 0.5rem 0.2rem 0.2rem 0.2rem;
+    gap: 0.7rem;
+  }
+  .video-player-wrapper,
+  .video-meta-section {
+    padding: 0.3rem 0.3rem 0.3rem 0.3rem;
+  }
+  .video-title {
+    font-size: 0.98rem;
+  }
+  .channel-logo {
+    width: 28px;
+    height: 28px;
+  }
+}
