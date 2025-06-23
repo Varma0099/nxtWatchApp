@@ -60,9 +60,7 @@
   font-size: 1rem;
   background: var(--color-surface);
   color: var(--color-text);
-  transition:
-    border 0.2s,
-    background 0.2s;
+  transition: border 0.2s, background 0.2s;
   outline: none;
 }
 .form-input:focus {
@@ -88,9 +86,7 @@
   cursor: pointer;
   padding: 0.25rem;
   border-radius: 50%;
-  transition:
-    background 0.2s,
-    color 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
 .password-toggle:hover,
 .password-toggle:focus {
@@ -110,9 +106,7 @@
   cursor: pointer;
   margin-top: 0.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  transition:
-    background 0.2s,
-    box-shadow 0.2s;
+  transition: background 0.2s, box-shadow 0.2s;
 }
 .login-button:hover,
 .login-button:focus {

@@ -110,11 +110,11 @@ class Gaming extends Component {
     return (
       <div>
         <Header />
-        <div className="Home">
+        <div className="home-container">
           <HeaderLeft />
-          <div className="Home-body">
-            <h1 className="h-trending">
-              <SiYoutubegaming className="symbol" />
+          <div className="home-content">
+            <h1 className="trending-header">
+              <SiYoutubegaming className="trending-badge" />
               Gaming
             </h1>
             <div>{renderContent}</div>

@@ -119,11 +119,11 @@ class Trending extends Component {
     return (
       <div>
         <Header />
-        <div className="Home">
+        <div className="home-container">
           <HeaderLeft />
-          <div className="Home-body">
-            <h1 className="h-trending">
-              <FaFire className="symbol-trending" />
+          <div className="home-content">
+            <h1 className="trending-header">
+              <FaFire className="trending-badge" />
               Trending
             </h1>
             <div>{renderContent}</div>

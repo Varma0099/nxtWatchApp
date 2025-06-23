@@ -45,9 +45,7 @@
   flex-direction: column;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.04);
   border-right: 1px solid var(--color-border);
-  transition:
-    background 0.3s,
-    width 0.3s;
+  transition: background 0.3s, width 0.3s;
   z-index: 10;
 }
 [data-theme='dark'] .sidebar {
@@ -72,10 +70,7 @@
   font-weight: 500;
   border-radius: 0 24px 24px 0;
   margin-right: 1rem;
-  transition:
-    background 0.18s,
-    color 0.18s,
-    font-weight 0.18s;
+  transition: background 0.18s, color 0.18s, font-weight 0.18s;
   position: relative;
 }
 .nav-item:hover,
@@ -134,10 +129,7 @@
   background: var(--color-card-hover);
   color: var(--color-text-secondary);
   font-size: 1.25rem;
-  transition:
-    background 0.18s,
-    color 0.18s,
-    transform 0.18s;
+  transition: background 0.18s, color 0.18s, transform 0.18s;
 }
 .social-icon:hover,
 .social-icon:focus {

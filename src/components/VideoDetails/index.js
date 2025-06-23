@@ -232,10 +232,12 @@ class VideoDetails extends Component {
     return (
       <div>
         <Header />
-        <div className="Home">
+        <div className="home-container">
           <HeaderLeft />
-          <div className="Home-body">
-            <div> {this.renderProductDetails()}</div>
+          <div className="home-content">
+            <div className="video-details-container">
+              {this.renderProductDetails()}
+            </div>
           </div>
         </div>
       </div>

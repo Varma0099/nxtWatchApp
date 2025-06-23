@@ -13,18 +13,27 @@
   gap: 2rem;
 }
 
-.gaming-header {
+.videos-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2.2rem 2rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.trending-header {
   display: flex;
   align-items: center;
   gap: 1.1rem;
   font-size: 2rem;
   font-weight: 700;
-  color: var(--color-accent);
+  color: var(--color-text);
   margin-bottom: 1.5rem;
   letter-spacing: 0.01em;
 }
-.gaming-badge {
-  background: var(--color-accent);
+
+.trending-badge {
+  background: var(--color-primary);
   color: #fff;
   border-radius: 50%;
   padding: 0.7rem;
@@ -35,50 +44,45 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.gaming-videos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2.2rem 2rem;
-  width: 100%;
-  margin-top: 0.5rem;
-}
-
 .gaming-card {
-  background: linear-gradient(120deg, #232526 0%, #414345 100%);
+  background: var(--color-surface);
   border-radius: var(--border-radius);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.13);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
   text-decoration: none;
-  color: #fff;
+  color: inherit;
   position: relative;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+  padding: 1.2rem;
   transition:
     box-shadow 0.18s,
     transform 0.18s,
     background 0.18s;
 }
+
 .gaming-card:hover,
 .gaming-card:focus {
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
   transform: translateY(-4px) scale(1.012);
-  background: linear-gradient(120deg, #232526 0%, #3ea6ff 100%);
+  background: var(--color-card-hover);
   outline: none;
 }
+
 .gaming-thumbnail {
   width: 100%;
   aspect-ratio: 16/9;
   object-fit: cover;
   border-radius: var(--border-radius);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.13);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   margin-bottom: 1.2rem;
 }
+
 .gaming-title {
   font-size: 1.18rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-text);
   margin-bottom: 0.2rem;
   line-height: 1.3;
   text-align: center;
@@ -87,21 +91,24 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
 .gaming-channel {
   font-size: 1.01rem;
-  color: #b3b3b3;
+  color: var(--color-text-secondary);
   font-weight: 500;
   margin-bottom: 0.1rem;
   text-align: center;
 }
+
 .gaming-stats {
   display: flex;
   align-items: center;
   gap: 0.7rem;
   font-size: 0.98rem;
-  color: #b3b3b3;
+  color: var(--color-text-secondary);
   justify-content: center;
 }
+
 .gaming-stats span {
   display: flex;
   align-items: center;
@@ -118,26 +125,30 @@
 .error-container {
   text-align: center;
   padding: 2.5rem 0 1rem 0;
-  color: #b3b3b3;
+  color: var(--color-text-secondary);
 }
+
 .error-image {
   width: 100%;
   max-width: 340px;
   margin-bottom: 1.5rem;
 }
+
 .error-title {
   font-size: 1.5rem;
-  color: #fff;
+  color: var(--color-text);
   margin-bottom: 1rem;
   font-weight: 700;
 }
+
 .error-message {
-  color: #b3b3b3;
+  color: var(--color-text-secondary);
   margin-bottom: 1.5rem;
   font-size: 1.08rem;
 }
+
 .retry-button {
-  background: var(--color-accent);
+  background: var(--color-primary);
   color: #fff;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -149,57 +160,56 @@
     color 0.2s;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
+
 .retry-button:hover,
 .retry-button:focus {
-  background: #232526;
+  background: var(--color-accent);
   color: #fff;
   outline: none;
 }
 
 @media (max-width: 1200px) {
-  .gaming-content {
-    padding: 1.5rem 1rem 1rem 1rem;
-  }
-  .gaming-videos-grid {
+  .videos-list {
     gap: 1.2rem 1rem;
   }
 }
+
 @media (max-width: 900px) {
-  .gaming-content {
-    padding: 1rem 0.5rem 0.5rem 0.5rem;
-  }
-  .gaming-header {
+  .trending-header {
     font-size: 1.3rem;
     gap: 0.7rem;
   }
-  .gaming-videos-grid {
+
+  .videos-list {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 1rem;
   }
+
   .gaming-card {
-    padding: 0.7rem 0.7rem 0.7rem 0.7rem;
+    padding: 0.7rem;
   }
+
   .gaming-thumbnail {
     margin-bottom: 0.7rem;
   }
 }
+
 @media (max-width: 600px) {
-  .gaming-content {
-    padding: 0.5rem 0.2rem 0.2rem 0.2rem;
-    gap: 1rem;
-  }
-  .gaming-header {
+  .trending-header {
     font-size: 1.1rem;
     gap: 0.5rem;
   }
-  .gaming-videos-grid {
+
+  .videos-list {
     grid-template-columns: 1fr;
     gap: 0.7rem;
   }
+
   .gaming-card {
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    padding: 0.5rem;
   }
+
   .gaming-thumbnail {
-    height: 120px;
+    margin-bottom: 0.5rem;
   }
 }

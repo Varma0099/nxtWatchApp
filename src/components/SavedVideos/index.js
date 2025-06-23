@@ -55,13 +55,16 @@ class SavedVideos extends Component {
           return (
             <div>
               {savedList.length === 0 ? (
-                <div>
+                <div className="no-saved-container">
                   <img
                     src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-saved-videos-img.png"
                     alt="no saved videos"
+                    className="no-saved-img"
                   />
-                  <h1>No saved videos found</h1>
-                  <p>Save your videos by clicking a button</p>
+                  <h1 className="no-saved-title">No saved videos found</h1>
+                  <p className="no-saved-message">
+                    Save your videos by clicking a button
+                  </p>
                 </div>
               ) : (
                 <ul className="videos-list-trending">
@@ -81,11 +84,11 @@ class SavedVideos extends Component {
     return (
       <div>
         <Header />
-        <div className="Home">
+        <div className="home-container">
           <HeaderLeft />
-          <div className="Home-body">
-            <h1 className="h-trending">
-              <FaFire className="symbol-trending" />
+          <div className="home-content">
+            <h1 className="trending-header">
+              <FaFire className="trending-badge" />
               Saved Videos
             </h1>
             <div>{this.renderSuccessView()}</div>
